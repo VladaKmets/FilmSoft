@@ -34,9 +34,8 @@ public class FilmsMain {
             }
             switch (myInt) {
                 case 1:
-                    //Do the same in the other operationsok
                     for (Film film: filmService.getListOfFilms()) {
-                        System.out.println(film.getName());
+                        System.out.println(film.getName() + ";" +film.getDirector());
                     }
                     break;
                 case 2:
