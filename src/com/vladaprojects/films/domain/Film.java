@@ -4,7 +4,6 @@ public class Film {
     private String name;
     private String director;
 
-  //this
     private Film() {
     }
 

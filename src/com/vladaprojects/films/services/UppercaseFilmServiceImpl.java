@@ -36,7 +36,7 @@ public class UppercaseFilmServiceImpl implements FilmService {
     }
 
     @Override
-    public void saveFile(Collection<String> collection) {
+    public void saveFile(Collection<Film> collection) {
         filmRepository.saveFile(collection);
     }
 
