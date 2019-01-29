@@ -28,13 +28,23 @@ public class FilmServiceImpl implements FilmService {
 
     //this you will do by yourself
     @Override
-    public void addFilm(String name, String director) {
-        films.add(new Film(name,director));
+    public void addFilm(String name, String director, String year) {
+        films.add(new Film(name,director,year));
     }
 
     @Override
     public void renameFilm(int indexOfFilmToRemove, String name) {
         films.get(indexOfFilmToRemove).setName(name);
+    }
+
+    @Override
+    public void renameDirector(int indexOfFilmToRemove, String director) {
+        films.get(indexOfFilmToRemove).setDirector(director);
+    }
+
+    @Override
+    public void changeYear(int indexOfFilmToRemove, String year) {
+        films.get(indexOfFilmToRemove).setYear(year);
     }
 
     @Override

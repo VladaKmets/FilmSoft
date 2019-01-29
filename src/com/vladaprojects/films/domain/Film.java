@@ -3,13 +3,16 @@ package com.vladaprojects.films.domain;
 public class Film {
     private String name;
     private String director;
+    private String year;
 
     private Film() {
     }
 
-    public Film(String name, String director) {
+    public Film(String name, String director, String year) {
         this.name = name;
         this.director = director;
+        this.year = year;
+
     }
 
     public String getName() {
@@ -26,5 +29,13 @@ public class Film {
 
     public void setDirector(String director) {
         this.director = director;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }

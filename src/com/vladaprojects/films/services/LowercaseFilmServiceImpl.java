@@ -26,14 +26,24 @@ public class LowercaseFilmServiceImpl implements FilmService {
     }
 
     @Override
-    public void addFilm(String name, String director) {
-        films.add(new Film(name.toLowerCase(),director.toLowerCase()));
+    public void addFilm(String name, String director,String year) {
+        films.add(new Film(name.toLowerCase(),director.toLowerCase(),year.toLowerCase()));
     }
 
     @Override
     public void renameFilm(int indexOfFilmToRemove, String name) {
         films.get(indexOfFilmToRemove).setName(name.toLowerCase());
 
+    }
+
+    @Override
+    public void renameDirector(int indexOfFilmToRemove, String director) {
+        films.get(indexOfFilmToRemove).setDirector(director.toLowerCase());
+    }
+
+    @Override
+    public void changeYear(int indexOfFilmToRemove, String year) {
+films.get(indexOfFilmToRemove).setYear(year.toLowerCase());
     }
 
 

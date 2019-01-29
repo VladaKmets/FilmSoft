@@ -21,7 +21,7 @@ public class FilmRepositoryImpl implements FilmRepository {
             String sCurrentLine;
             while ((sCurrentLine = bufferedReader.readLine()) != null) {
                 String[] filmData = sCurrentLine.split(";");
-                films.add(new Film(filmData[0], filmData[1]));
+                films.add(new Film(filmData[0], filmData[1], filmData[2]));
             }
         } catch (IOException e) {
             System.out.println("Something went wrong. Contact admin.");
@@ -61,7 +61,7 @@ public class FilmRepositoryImpl implements FilmRepository {
     public void saveFile(Collection<Film> collection) {
         try (PrintWriter out = new PrintWriter(new File("test.txt"))) {
             for (Film film : collection) {
-                out.write(film.getName() + ";" + film.getDirector() + "\n");
+                out.write(film.getName() + ";" + film.getDirector() + ";" + film.getYear()+"\n");
             }
         } catch (IOException e) {
             System.out.println("Something went wrong. Contact admin.");

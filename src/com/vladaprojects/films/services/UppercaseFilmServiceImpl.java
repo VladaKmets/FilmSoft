@@ -26,13 +26,23 @@ public class UppercaseFilmServiceImpl implements FilmService {
     }
 
     @Override
-    public void addFilm(String name, String director) {
-        films.add(new Film(name.toUpperCase(), director.toUpperCase()));
+    public void addFilm(String name, String director, String year) {
+        films.add(new Film(name.toUpperCase(), director.toUpperCase(), year.toUpperCase()));
     }
 
     @Override
     public void renameFilm(int indexOfFilmToRemove, String name) {
         films.get(indexOfFilmToRemove).setName(name.toUpperCase());
+    }
+
+    @Override
+    public void renameDirector(int indexOfFilmToRemove, String director) {
+        films.get(indexOfFilmToRemove).setDirector(director.toUpperCase());
+    }
+
+    @Override
+    public void changeYear(int indexOfFilmToRemove, String year) {
+films.get(indexOfFilmToRemove).setYear(year.toUpperCase());
     }
 
     @Override

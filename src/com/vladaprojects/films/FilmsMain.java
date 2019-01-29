@@ -35,16 +35,18 @@ public class FilmsMain {
             switch (myInt) {
                 case 1:
                     for (Film film: filmService.getListOfFilms()) {
-                        System.out.println(film.getName() + ";" +film.getDirector());
+                        System.out.println(film.getName() + ";" +film.getDirector()+  ";"+ film.getYear());
                     }
                     break;
                 case 2:
                     System.out.println("You chose option 2: add a film");
                     System.out.println("Please, enter the name of a film");
                     System.out.println("Please, enter the name of a director");
+                    System.out.println("Please, enter the year of a film");
                     String name = keyboard.nextLine();
                     String director = keyboard.nextLine();
-                    filmService.addFilm(name,director);
+                    String year = keyboard.nextLine();
+                    filmService.addFilm(name,director,year);
                     break;
                 case 3:
                     System.out.println("You chose option 3: remove a film");
@@ -57,9 +59,40 @@ public class FilmsMain {
                     System.out.println("Please, enter the position of a film to rename");
                     indexOfFilmToRemove = Integer.valueOf(keyboard.nextLine());
                     filmService.remove(indexOfFilmToRemove - 1);
-                    System.out.println("Please, enter the name of a new film");
-                    name = keyboard.nextLine();
-                    filmService.renameFilm(indexOfFilmToRemove, name);
+                    System.out.println("Please, choose what is going to be changed:");
+                    System.out.println("1 - the name of a film");
+                    System.out.println("2 - the director");
+                    System.out.println("3 - the year");
+                    int myNumber=0;
+                    try {
+                        myNumber = Integer.valueOf(keyboard.nextLine());
+                    } catch (NumberFormatException exception) {
+                        System.out.println("Sorry!There was a problem:(");
+                    }
+                    switch (myNumber){
+                        case 1:
+                            System.out.println("You chose option 1: change the name of existing film");
+                            name = keyboard.nextLine();
+                            filmService.renameFilm(indexOfFilmToRemove, name);
+                            keyboard.close();
+                            filmService.saveFile(filmService.getListOfFilms());
+                            System.exit(1);
+                        case 2:
+                            System.out.println("You chose option 2: change the director");
+                            director = keyboard.nextLine();
+                            filmService.renameDirector(indexOfFilmToRemove,director);
+                            keyboard.close();
+                            filmService.saveFile(filmService.getListOfFilms());
+                            System.exit(1);
+                        case 3:
+                            System.out.println("You chose option 3: change the year");
+                            year = keyboard.nextLine();
+                            filmService.changeYear(indexOfFilmToRemove,year);
+                            keyboard.close();
+                            filmService.saveFile(filmService.getListOfFilms());
+                            System.exit(1);
+                    }
+
                     break;
                 case 5:
                     filmService = new UppercaseFilmServiceImpl(filmRepository, filmService.getListOfFilms());
