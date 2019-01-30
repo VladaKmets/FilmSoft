@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+//todo add exception handling, "exists" logic
+//todo use internal film service (create it and use in the all film service implementations)
 public class LowercaseFilmServiceImpl implements FilmService {
     private FilmRepository filmRepository;
     private List<Film> films;
@@ -26,8 +28,8 @@ public class LowercaseFilmServiceImpl implements FilmService {
     }
 
     @Override
-    public void addFilm(String name, String director,String year) {
-        films.add(new Film(name.toLowerCase(),director.toLowerCase(),year.toLowerCase()));
+    public void addFilm(String name, String director, String year) {
+        films.add(new Film(name.toLowerCase(), director.toLowerCase(), year.toLowerCase()));
     }
 
     @Override
@@ -43,7 +45,7 @@ public class LowercaseFilmServiceImpl implements FilmService {
 
     @Override
     public void changeYear(int indexOfFilmToRemove, String year) {
-films.get(indexOfFilmToRemove).setYear(year.toLowerCase());
+        films.get(indexOfFilmToRemove).setYear(year.toLowerCase());
     }
 
 
@@ -55,5 +57,10 @@ films.get(indexOfFilmToRemove).setYear(year.toLowerCase());
     @Override
     public void remove(int i) {
         films.remove(i);
+    }
+
+    @Override
+    public boolean exists(int numberOfFilm) {
+        return false;
     }
 }

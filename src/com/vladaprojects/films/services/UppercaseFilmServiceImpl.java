@@ -42,7 +42,7 @@ public class UppercaseFilmServiceImpl implements FilmService {
 
     @Override
     public void changeYear(int indexOfFilmToRemove, String year) {
-films.get(indexOfFilmToRemove).setYear(year.toUpperCase());
+        films.get(indexOfFilmToRemove).setYear(year.toUpperCase());
     }
 
     @Override
@@ -53,5 +53,10 @@ films.get(indexOfFilmToRemove).setYear(year.toUpperCase());
     @Override
     public void remove(int i) {
         films.remove(i);
+    }
+
+    @Override
+    public boolean exists(int numberOfFilm) {
+        return false;
     }
 }

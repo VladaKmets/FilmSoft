@@ -1,20 +1,27 @@
 package com.vladaprojects.films.services;
 
 import com.vladaprojects.films.domain.Film;
+import com.vladaprojects.films.services.exception.FilmNotFoundException;
 
 import java.util.Collection;
 import java.util.List;
 
 public interface FilmService {
-    public List<Film> getListOfFilms();
 
-    public void addFilm(String name, String director, String year);
+    List<Film> getListOfFilms();
 
-    public void renameFilm(int indexOfFilmToRemove, String name);
-    public void renameDirector(int indexOfFilmToRemove, String director);
-    public void changeYear(int indexOfFilmToRemove, String year);
-     public void saveFile(Collection<Film> collection);
+    void addFilm(String name, String director, String year);
 
-   public void remove(int i);
+    void renameFilm(int indexOfFilmToRemove, String name) throws FilmNotFoundException;
+
+    void renameDirector(int indexOfFilmToRemove, String director) throws FilmNotFoundException;
+
+    void changeYear(int indexOfFilmToRemove, String year) throws FilmNotFoundException;
+
+    void saveFile(Collection<Film> collection);
+
+    void remove(int i) throws FilmNotFoundException;
+
+    boolean exists(int numberOfFilm);
 
 }
