@@ -4,7 +4,7 @@
     <groupId>filmsoft</groupId>
     <artifactId>core</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>war</packaging>
 
     <parent>
         <groupId>filmsoft</groupId>
