@@ -30,4 +30,13 @@ public class FilmServlet extends HttpServlet {
             response.sendRedirect("index.jsp");
         }
     }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("name", "Vladka run");
+        req.setAttribute("director", "Maks");
+        RequestDispatcher dispatcher
+                = req.getRequestDispatcher("index.jsp");
+        dispatcher.forward(req, resp);
+    }
 }

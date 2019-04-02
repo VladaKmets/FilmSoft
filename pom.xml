@@ -11,6 +11,8 @@
     <properties>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <servlet-api.version>4.0.0</servlet-api.version>
+        <mysql-connector.version>8.0.13</mysql-connector.version>
+        <lombok.version>1.18.6</lombok.version>
     </properties>
 
     <modules>
@@ -24,6 +26,17 @@
             <version>${servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
