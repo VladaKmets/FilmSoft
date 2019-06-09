@@ -18,8 +18,6 @@ public interface FilmService {
 
     void changeYear(int indexOfFilmToRemove, String year) throws FilmNotFoundException;
 
-    void saveFile(Collection<Film> collection);
-
     void remove(int i) throws FilmNotFoundException;
 
     boolean exists(int numberOfFilm);

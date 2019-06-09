@@ -57,16 +57,6 @@ public class FilmRepositoryImpl implements FilmRepository {
 
     }
 
-    @Override
-    public void saveFile(Collection<Film> collection) {
-        try (PrintWriter out = new PrintWriter(new File("test.txt"))) {
-            for (Film film : collection) {
-                out.write(film.getName() + ";" + film.getDirector() + ";" + film.getYear()+"\n");
-            }
-        } catch (IOException e) {
-            System.out.println("Something went wrong. Contact admin.");
-        }
-    }
 }
 
 

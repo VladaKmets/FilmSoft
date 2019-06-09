@@ -13,5 +13,4 @@ public interface FilmRepository {
     public void removeFilm();
 
     public void renameFilm();
-     public void saveFile(Collection<Film> collection);
 }

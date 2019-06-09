@@ -46,11 +46,6 @@ public class UppercaseFilmServiceImpl implements FilmService {
     }
 
     @Override
-    public void saveFile(Collection<Film> collection) {
-        filmRepository.saveFile(collection);
-    }
-
-    @Override
     public void remove(int i) {
         films.remove(i);
     }

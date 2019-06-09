@@ -49,10 +49,7 @@ public class FilmServiceImpl implements FilmService {
         films.get(indexOfFilmToEdit).setYear(year);
     }
 
-    @Override
-    public void saveFile(Collection<Film> collection) {
-        filmRepository.saveFile(collection);
-    }
+
 
     @Override
     public void remove(int numberOfFilmToRemove) throws FilmNotFoundException {

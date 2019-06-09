@@ -1,12 +1,11 @@
 package com.vladaprojects.films;
 
 import com.vladaprojects.films.domain.Film;
+import com.vladaprojects.films.repositories.FileRepository;
+import com.vladaprojects.films.repositories.FileRepositoryImpl;
 import com.vladaprojects.films.repositories.FilmRepository;
 import com.vladaprojects.films.repositories.FilmRepositoryImpl;
-import com.vladaprojects.films.services.FilmService;
-import com.vladaprojects.films.services.FilmServiceImpl;
-import com.vladaprojects.films.services.LowercaseFilmServiceImpl;
-import com.vladaprojects.films.services.UppercaseFilmServiceImpl;
+import com.vladaprojects.films.services.*;
 import com.vladaprojects.films.services.exception.FilmNotFoundException;
 
 import java.util.*;
@@ -15,6 +14,8 @@ public class FilmsMain {
     public static void main(String[] args) {
         FilmRepository filmRepository = new FilmRepositoryImpl();
         FilmService filmService = new FilmServiceImpl(filmRepository);
+        FileRepository fileRepository = new FileRepositoryImpl();
+        FileService fileService = new FileServiceImpl(fileRepository);
 
         Scanner keyboard = new Scanner(System.in);
         while (true) {
@@ -64,7 +65,7 @@ public class FilmsMain {
                     System.out.println("You chose option 4: edit the existing film");
                     System.out.println("Please, enter the position of a film to rename");
                     indexOfFilmToRemove = Integer.valueOf(keyboard.nextLine());
-                    if(!filmService.exists(indexOfFilmToRemove)) {
+                    if(!filmService.exists(indexOfFilmToRemove-1)) {
                         System.out.println("You've entered the number out of range. Try again");
                     }else {
                         System.out.println("Please, choose what is going to be changed:");
@@ -82,7 +83,7 @@ public class FilmsMain {
                                 System.out.println("You chose option 1: change the name of existing film");
                                 name = keyboard.nextLine();
                                 try {
-                                    filmService.renameFilm(indexOfFilmToRemove, name);
+                                    filmService.renameFilm(indexOfFilmToRemove-1, name);
                                 } catch (FilmNotFoundException e) {
                                     System.out.println("You've entered the wrong number of film");
                                 }
@@ -91,7 +92,7 @@ public class FilmsMain {
                                 System.out.println("You chose option 2: change the director");
                                 director = keyboard.nextLine();
                                 try {
-                                    filmService.renameDirector(indexOfFilmToRemove, director);
+                                    filmService.renameDirector(indexOfFilmToRemove-1, director);
                                 } catch (FilmNotFoundException e) {
                                     System.out.println("You've entered the wrong number of film");
                                 }
@@ -100,7 +101,7 @@ public class FilmsMain {
                                 System.out.println("You chose option 3: change the year");
                                 year = keyboard.nextLine();
                                 try {
-                                    filmService.changeYear(indexOfFilmToRemove, year);
+                                    filmService.changeYear(indexOfFilmToRemove-1, year);
                                 } catch (FilmNotFoundException e) {
                                     System.out.println("You've entered the wrong number of film");
                                 }
@@ -120,7 +121,7 @@ public class FilmsMain {
                 case 7:
                     System.out.println("You chose option 5: quit the session");
                     keyboard.close();
-                    filmService.saveFile(filmService.getListOfFilms());
+                    fileService.saveFile(filmService.getListOfFilms());
                     System.exit(1);
                     break;
                 default:

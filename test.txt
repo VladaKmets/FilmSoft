@@ -1,4 +1,4 @@
 Anna Karenina;McConaughey;2012
-test;Cattral;0000
-Maverick;Gibson;2005
+film;Cattral;0000
+testfilm;Gibson;2005
 test2;Tester2;0000
